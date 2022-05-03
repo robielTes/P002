@@ -1,31 +1,42 @@
 require_relative 'LinkedList'
 list = LinkedList.new
 
-puts list.getSize() # 0
-puts list.isEmpty() # true
+puts "List size: #{list.size}" # 0
+puts "List empty? #{list.isEmpty?}" # true
 
 list.addHead('L')
 list.addHead('O')
 list.addHead('O')
 list.addHead('C')
 
-puts list.getSize() # 4
-puts list.isEmpty() # false
-puts list.getHead() # C
-puts list.getTail() # L
+puts "List size: #{list.size}" # 4
+puts "List empty? #{list.isEmpty?}" # false
+puts "First element: #{list.getHead()}" # C
+puts "Last element:  #{list.getTail()}" # L
 
 list.addTail('X')
 list.addTail('Y')
 
-puts list.getSize() # 6
-puts list.isEmpty() # false
-puts list.getHead() # C
-puts list.getTail() # Y
+puts "List size: #{list.size}" # 6
+puts "List empty? #{list.isEmpty?}" # false
+puts "First element: #{list.getHead()}" # C
+puts "Last element:  #{list.getTail()}" # Y
 
-list.removeHead()
-list.removeTail()
+puts "RemoveHead: #{list.removeHead()}"
+puts "RemoveHead: #{list.removeTail()}"
 
-puts list.getSize() # 4
-puts list.isEmpty() # false
-puts list.getHead() # O
-puts list.getTail() # X
+puts "List size: #{list.size}" # 4
+puts "List empty? #{list.isEmpty?}" # false
+puts "First element: #{list.getHead()}" # O
+puts "Last element:  #{list.getTail()}" # X
+
+puts "You should see an empty list exception now"
+begin
+  puts "RemoveHead: #{list.removeHead}"
+  puts "RemoveHead: #{list.removeHead}"
+  puts "RemoveHead: #{list.removeHead}"
+  puts "RemoveHead: #{list.removeHead}"
+  puts "RemoveHead: #{list.removeHead}"
+rescue EmptyListError
+  puts "!!! The list is empty !!!"
+end
