@@ -20,7 +20,6 @@ class LinkedList
           @tail = node
       end
       @size += 1
-      return self
    end
 
    
@@ -35,7 +34,6 @@ class LinkedList
         @head = node
     end
     @size += 1
-    return self
    end
 
     def getTail()
@@ -73,11 +71,7 @@ class LinkedList
     end
 
     def isEmpty
-        if @head == nil
-            return true
-        else
-            return false
-        end
+        @head == nil
     end
 
 end
