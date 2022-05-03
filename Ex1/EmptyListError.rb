@@ -1,0 +1,2 @@
+class EmptyListError < StandardError
+end

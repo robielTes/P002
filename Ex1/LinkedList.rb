@@ -1,24 +1,22 @@
 require_relative 'Node'
+require_relative 'EmptyListError'
 
 class LinkedList
     attr_accessor :head, :tail, :size
 
     def initialize()
-        @head = nil
-        @tail = nil
         @size = 0
     end
 
     def addTail(value)
       node = Node.new(value)
       if @size==0
-          @head = node
-          @tail = node
+          @head = node         
       else 
           @tail.next = node
           node.prev = @tail
-          @tail = node
       end
+      @tail = node
       @size += 1
    end
 
@@ -26,25 +24,27 @@ class LinkedList
    def addHead(value)
     node = Node.new(value)
     if @size==0 
-        @head = node
         @tail = node
     else 
         @head.prev = node
         node.next = @head
-        @head = node
     end
+    @head = node
     @size += 1
    end
 
     def getTail()
+        raise EmptyListError unless @tail
      return @tail.value
     end
 
     def getHead()
+        raise EmptyListError unless @head
       return @head.value
     end
    
     def removeTail()
+        raise EmptyListError unless @tail
         if @size == 1
             @head = nil
             @tail = nil
@@ -56,6 +56,7 @@ class LinkedList
     end
 
     def removeHead()
+        raise EmptyListError unless @head
         if @size == 1
             @head = nil
             @tail = nil
@@ -65,14 +66,18 @@ class LinkedList
         end
         @size -= 1
     end
-  
-    def getSize()
-        return @size
-    end
 
-    def isEmpty
+    def isEmpty?
         @head == nil
     end
+
+    def each
+        cursor = @head
+        while cursor
+          yield cursor.value
+          cursor = cursor.next
+        end
+      end
 
 end
 
