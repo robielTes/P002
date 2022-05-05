@@ -1,14 +1,16 @@
-class Queue
+require_relative 'LinkedList'
+
+class ListQueue
     def initialize
-        @queue = []
+        @queue = LinkedList.new
     end
     
     def enqueue(el)
-        @queue.push(el)
+        @queue.addTail(el)
     end
     
     def dequeue
-        @queue.shift
+        @queue.removeHead
     end
 
     def size
@@ -16,7 +18,7 @@ class Queue
     end
 
     def isEmpty?
-        @queue.empty?
+        @queue.isEmpty?
     end
 
 end

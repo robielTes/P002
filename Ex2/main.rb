@@ -1,5 +1,5 @@
-require_relative 'Queue'
-list = Queue.new
+require_relative 'ArrayQueue'
+list = ArrayQueue.new
 
 list.enqueue('L')
 list.enqueue('O')
@@ -23,8 +23,8 @@ puts "List empty? #{list.isEmpty?}" # true
 
 puts "==========================="
 
-require_relative 'QueueLinkedList'
-linkedList = QueueLinkedList.new
+require_relative 'ListQueue'
+linkedList = ListQueue.new
 
 linkedList.enqueue('L')
 linkedList.enqueue('O')
