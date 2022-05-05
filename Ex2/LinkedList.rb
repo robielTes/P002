@@ -45,26 +45,33 @@ class LinkedList
    
     def removeTail()
         raise EmptyListError unless @tail
-        if @size == 1
-            @head = nil
-            @tail = nil
+        node = @tail
+        @tail = node.prev
+        
+        if @tail
+          @tail.next = nil
         else
-            @tail = @tail.prev
-            @tail.next = nil
+          @head = nil
         end
+        
         @size -= 1
+        node.value
     end
 
     def removeHead()
         raise EmptyListError unless @head
-        if @size == 1
-            @head = nil
-            @tail = nil
+
+        node = @head
+        @head = node.next
+        
+        if @head
+          @head.prev = nil
         else
-            @head = @head.next
-            @head.prev = nil
+          @tail = nil
         end
+        
         @size -= 1
+        node.value
     end
 
     def isEmpty?
