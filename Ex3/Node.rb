@@ -1,29 +1,27 @@
 class Node
-  attr_accessor :letter, :children, :word_finished
-  
   def initialize()
-    @children = Array.new(26)
-    @word_finished = false
+      @children = Array.new(26)
+      @end_of_element = false
   end
-  
-  def add_child(child_node)
-    @children << child_node
+
+  def children
+      @children
   end
-  
-  def get_child(char)
-    @children.each do |child|
-      return child if child.letter == char
-    end
-    nil
+
+  def end_of_element?
+      @end_of_element
   end
-  
-  def mark_as_word_finished
-    @word_finished = true
+
+  def end_of_element=(bool)
+      @end_of_element = bool
   end
-  
-  def word_finished?
-    @word_finished
+
+  def child(position)
+      @children[position]
   end
-  
-  
+
+  def add_child(position)
+      @children[position] = Node.new
+  end
+
 end
