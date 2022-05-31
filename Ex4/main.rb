@@ -1,16 +1,7 @@
-require_relative 'ArrayQueue'
-require_relative 'ListQueue'
+require_relative 'QueueFactory'
 
-def createQueue(list)
- if list == "ArrayQueue"
-  return ArrayQueue.new
- elsif list == "ListQueue"
-  return ListQueue.new
- end
-end
-
-queue1 = createQueue('ArrayQueue')
-queue2 = createQueue('ListQueue')
+queue1 = QueueFactory.createQueue('optimized_for_memory')
+queue2 = QueueFactory.createQueue('optimized_for_speed')
 
 queue1.enqueue(42)
 queue2.enqueue(1337)

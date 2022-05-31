@@ -1,2 +1,0 @@
-class EmptyListError < StandardError
-end
