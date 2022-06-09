@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'net/smtp'
+
+if ARGV.size < 4
+  puts "Usage: minisendmail <from> <recipients> <subject> <body_filename>"
+  exit
+end
+
+smtp_server = 'localhost'
+smtp_port = 3325
+
+from, recipients, subject, body_filename = ARGV
+recipients = recipients.split(/,;/)
+
+email = <<EOM
+From: #{from}
+To: #{recipients.join(', ')}
+Subject: #{subject}
+
+#{File.read(body_filename)}
+EOM
+
+Net::SMTP.start(smtp_server, smtp_port) do |smtp|
+  smtp.send_message email, from, recipients
+end

@@ -1,0 +1,9 @@
+./mini_send_mail me@example.com good@cpnv.ch GoodOne clean_body.txt
+./mini_send_mail me@example.com okay@vd.ch GoodOneToo clean_body.txt
+./mini_send_mail me@example.com bad@other.ch BadRecipient clean_body.txt
+./mini_send_mail me@example.com good@cpnv.ch Bad1 bad_one_body.txt
+./mini_send_mail me@example.com good@cpnv.ch Bad2 bad_two_body.txt
+echo ">> Your stats.txt file should contain:"
+echo Received count: 5
+echo Rejected count: 3
+echo Spam ratio: 60%
