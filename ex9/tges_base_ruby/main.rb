@@ -55,7 +55,7 @@ class TheServer
   end
 end
 
-server = ServerFactory.createFactory('rumbster',port)
+server = ServerFactory.createServer('rumbster',port)
 
 server.add_observer(TheServer.new)
 server.start

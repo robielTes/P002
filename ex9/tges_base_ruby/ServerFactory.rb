@@ -1,7 +1,7 @@
 require 'rumbster'
 
 class ServerFactory
-  def self.createFactory(name,port)
+  def self.createServer(name,port)
     case name
     when 'rumbster'
       Rumbster.new(port)
