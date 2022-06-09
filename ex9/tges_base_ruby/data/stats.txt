@@ -1,0 +1,3 @@
+Received count: 22
+Rejected count: 14
+Spam ratio: 63%
