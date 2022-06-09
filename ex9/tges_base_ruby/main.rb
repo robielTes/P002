@@ -1,6 +1,6 @@
 port = (ARGV[0] || 3325).to_i
 
-require 'rumbster'
+require_relative 'ServerFactory'
 require 'mail'
 
 class TheServer
@@ -55,7 +55,8 @@ class TheServer
   end
 end
 
-rumbster = Rumbster.new(port)
-rumbster.add_observer(TheServer.new)
-rumbster.start
-rumbster.join
+server = ServerFactory.createFactory('rumbster',port)
+
+server.add_observer(TheServer.new)
+server.start
+server.join
